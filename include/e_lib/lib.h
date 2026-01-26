@@ -18,11 +18,15 @@ class Chassis
      * LEFT MG
      * \param right
      * RIGHT MG
-     * \param distance
-	 * DISTANCE BETWEEN TWO WHEEL DRIVES
+     * \param width
+	 * DISTANCE BETWEEN TWO WHEEL SIDES
+	 * \param wheel
+	 * WHEEL DIAMETER
+	 * \param gearRatio
+	 * GEAR RATIO
 	 */
 
-    Chassis(pros::MotorGroup left, pros::MotorGroup right, float dist);
+    Chassis(pros::MotorGroup left, pros::MotorGroup right, double width, double wheelDia, double gearRatio);
 
     /**
 	 * Sets the relative target position for the chassis to move to.
@@ -44,8 +48,8 @@ class Chassis
 	 
 	 */
 
-    std::int32_t move_relative(const double position, const std::int32_t velocity) const;
+    void move_relative(const double position, const double velocity) const;
 
-    std::int32_t turn(const double radius, const double degrees)
+    void turn(const double radius, const double degrees)
 
 }
