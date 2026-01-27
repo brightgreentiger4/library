@@ -24,32 +24,44 @@ class Chassis
 	 * WHEEL DIAMETER
 	 * \param gearRatio
 	 * GEAR RATIO
+	 * 
 	 */
 
     Chassis(pros::MotorGroup left, pros::MotorGroup right, double width, double wheelDia, double gearRatio);
 
     /**
-	 * Sets the relative target position for the chassis to move to.
+	 * Moves the chassis forward by distance.
 	 *
 	 * This movement is relative to the current position of each motor as given in
 	 * pros::MotorGroup::get_position(). Providing 10.0 as the position parameter
-	 * would result in the motor moving 10 units, no matter what the
+	 * would result in the chassis moving 10 in, no matter what the
 	 * current position is.
 	 *
 	 *
 	 *
 	 * \param position
-	 *        The relative position to move to in the motor's encoder units
+	 *        The relative position to move
 	 * \param velocity
 	 *        The maximum allowable velocity for the movement in RPM
 	 *
-	 * \return 1 if the operation was successful or PROS_ERR if the operation
-	 * failed, setting errno.
-	 
+	 * 
 	 */
 
     void move_relative(const double position, const double velocity) const;
 
-    void turn(const double radius, const double degrees)
+	/**
+	 * Rotates the chassis along a curve.
+	 *
+	 * \param radius
+	 * 		The turn circle of the chassis
+	 * \param degrees
+	 * 		The amount of degrees to rotate
+	 * \param velocity
+	 * The maximum allowable velocity for the motors to rotate in RPM
+	 * \param dir
+	 * The direction of turn. -1 or 1. Other values will break the robot. NO BOOLEAN TOO LAZY
+	 */
+
+    void turn(const double radius, const double degrees, const double velocity, int dir)
 
 }
