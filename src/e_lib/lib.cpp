@@ -18,17 +18,26 @@ class Chassis {
         };
 
         void turn(const double degrees, const double radius, const double velocity, const int dir) {
-            double proportionOfCircle = 360/degrees
-            double baseDist = 2*radius*Pi*position*wheelGearRatio*proportionOfCircle // 2PIR * proportion
+            double proportionOfCircle = 360/degrees;
+            double baseDist = 2*radius*Pi*position*wheelGearRatio*proportionOfCircle; // 2PIR * proportion
             
-            double offsetDist = 2*chassisWidth*Pi*position*wheelGearRatio*proportionOfCircle*dir // added perimeter
+            double offsetDist = 2*chassisWidth*Pi*position*wheelGearRatio*proportionOfCircle; // added perimeter
             
-            double goal = baseDist+offsetDist
+            double goal = baseDist+offsetDist;
             
-            double velProportion = (baseDist-offsetDist)/(baseDist+offsetDist)
+            double velProportion = (baseDist-offsetDist)/(baseDist+offsetDist); // velocity reduction for inner section
             
-            leftMG.move_relative(baseDist+offsetDist, velocity)
-            rightMG.move_relative(baseDist-offsetDist, velocity)
+            if (dir == -1) {
+                velocity *= velProportion;
+                velProportion = 1/velProportion; // LARGER NUMBER
+            }
+            
+            
+
+            leftMG.move_relative(baseDist+offsetDist*dir, velocity);
+            rightMG.move_relative(baseDist-offsetDist*dir, velocity*velProportion);
+
+
         }
 
         void move_relative(double position, double velocity) {
