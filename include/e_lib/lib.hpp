@@ -27,7 +27,7 @@ class Chassis{
 	 * 
 	 */
 
-    Chassis(pros::MotorGroup left, pros::MotorGroup right, double width, double wheelDia, double gearRatio);
+    Chassis(std::vector<std::int8_t> left, std::vector<std::int8_t> right, double width, double wheelDia, double gearRatio);
 
     /**
 	 * Moves the chassis forward by distance.
@@ -64,8 +64,8 @@ class Chassis{
 
     void turnWithRadius(const double radius, const double degrees, const double velocity, int dir);
 	private:
-		pros::MotorGroup leftMG;
-		pros::MotorGroup rightMG;
+		std::vector<std::int8_t> leftPorts; // SINCE WE CANT STORE A PROS::MOTORGROUP DIRECTLY, WE STORE PORTS.
+		std::vector<std::int8_t> rightPorts; // THIS IS SIMILAR TO EVERY OTHER LIBRARY
 		double chassisWidth;
 		double wheelGearRatio;
 };
