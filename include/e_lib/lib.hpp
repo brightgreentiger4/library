@@ -1,30 +1,30 @@
 // lib.h
-
+#pragma once
 #include "main.h"
-
-#define Chassis
 
 namespace e_lib {
 
-class Chassis{
-
+class Chassis{ 
+	private:
+		std::vector<std::int8_t> leftPorts; // SINCE WE CANT STORE A PROS::MOTORGROUP DIRECTLY, WE STORE PORTS.
+		std::vector<std::int8_t> rightPorts; // THIS IS SIMILAR TO EVERY OTHER LIBRARY
+		double chassisWidth;
+		double wheelGearRatio;
     public:
     /**
 	 * Creates a new Chassis object
      * Requires 2 MotorGroups: Left and Right
-     * Requires a distance between the two MotorGroups (turn rate)
-     * (pros::MotorGroup left, pros::MotorGroup right, float distance)
-     * \param left
+     * Requires a distance between the two MotorGroups (for turning)
+     * @param left
      * LEFT MG
-     * \param right
+     * @param right
      * RIGHT MG
-     * \param width
+     * @param width
 	 * DISTANCE BETWEEN TWO WHEEL SIDES
-	 * \param wheel
+	 * @param wheel
 	 * WHEEL DIAMETER
-	 * \param gearRatio
+	 * @param gearRatio
 	 * GEAR RATIO
-	 * 
 	 */
 
     Chassis(std::vector<std::int8_t> left, std::vector<std::int8_t> right, double width, double wheelDia, double gearRatio);
@@ -36,22 +36,16 @@ class Chassis{
 	 * pros::MotorGroup::get_position(). Providing 10.0 as the position parameter
 	 * would result in the chassis moving 10 in, no matter what the
 	 * current position is.
-	 *
-	 *
-	 *
-	 * \param position
+	 * @param position
 	 *        The relative position to move
-	 * \param velocity
+	 * @param velocity
 	 *        The maximum allowable velocity for the movement in RPM
-	 *
-	 * 
 	 */
 
     void move_relative(const double position, const double velocity);
 
 	/**
 	 * Rotates the chassis along a curve.
-	 *
 	 * \param radius
 	 * 		The turn circle of the chassis
 	 * \param degrees
@@ -63,10 +57,6 @@ class Chassis{
 	 */
 
     void turnWithRadius(const double radius, const double degrees, const double velocity, int dir);
-	private:
-		std::vector<std::int8_t> leftPorts; // SINCE WE CANT STORE A PROS::MOTORGROUP DIRECTLY, WE STORE PORTS.
-		std::vector<std::int8_t> rightPorts; // THIS IS SIMILAR TO EVERY OTHER LIBRARY
-		double chassisWidth;
-		double wheelGearRatio;
+	
 };
 }
