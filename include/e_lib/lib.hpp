@@ -56,7 +56,7 @@ class Chassis{
 	 * The direction of turn. -1 or 1. Other values will break the robot. NO BOOLEAN TOO LAZY
 	 */
 
-    void turn(const double radius, const double degrees, const double velocity, int dir);
+    void turn(const double radius, const double degrees, const double velocity, int dir = 1);
 	
 };
 }

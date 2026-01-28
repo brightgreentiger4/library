@@ -58,7 +58,13 @@ void competition_initialize() {}
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-void autonomous() {}
+void autonomous() {
+
+	// EXAMPLE USAGE OF CHASSIS
+	e_lib::Chassis myChassis({1, 2, 3}, {4, 5, 6}, 7.5, 4.125, 1);
+	myChassis.move_relative(50, 50);
+	myChassis.turn(90, 9, 80, 1);
+}
 
 /**
  * Runs the operator control code. This function will be started in its own task

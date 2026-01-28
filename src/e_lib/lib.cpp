@@ -33,10 +33,10 @@ namespace e_lib {
         rightMG.move_relative(rightMGMovement, velocity*velProportion);
 
         // YIELD
-        while ((leftMG.get_position() > leftMGMovement-5) && (leftMG.get_position() < leftMGMovement+5))  {
+        while ((leftMG.get_position() < leftMGMovement-5) || (leftMG.get_position() > leftMGMovement+5))  {
             pros::delay(20);
         };
-        while ((rightMG.get_position() > rightMGMovement-5) && (leftMG.get_position() < rightMGMovement+5))  {
+        while ((rightMG.get_position() < rightMGMovement-5) || (leftMG.get_position() > rightMGMovement+5))  {
             pros::delay(20);
         };
     }
@@ -49,5 +49,10 @@ namespace e_lib {
         
         leftMG.move_relative(dist, velocity);
         rightMG.move_relative(dist, velocity);
+
+        while ((leftMG.get_position() < dist-5) || (leftMG.get_position() > dist+5)) {
+            pros::delay(20);
+        };
+
     }
 }
