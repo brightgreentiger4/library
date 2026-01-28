@@ -30,21 +30,30 @@ class Chassis {
             if (dir == -1) {
                 velocity *= velProportion;
                 velProportion = 1/velProportion; // LARGER NUMBER
-            }
+            };
             
-            
+            leftMG.tare_position_all();
+            rightMG.tare_position_all();
+            double leftMGMovement =  baseDist+offsetDist*dir;
+            double rightMGMovement =  baseDist-offsetDist*dir;
+            leftMG.move_relative(leftMGMovement, velocity);
+            rightMG.move_relative(rightMGMovement, velocity*velProportion);
 
-            leftMG.move_relative(baseDist+offsetDist*dir, velocity);
-            rightMG.move_relative(baseDist-offsetDist*dir, velocity*velProportion);
-
-
+            // YIELD
+            while (leftMG.get_position() > leftMGMovement-5) && (leftMG.get_position() < leftMGMovement+5)  {
+                pros::delay(20);
+            };
+           while (rightMG.get_position() > rightMGMovement-5) && (leftMG.get_position() < rightMGMovement+5)  {
+                pros::delay(20);
+            };
         }
 
         void move_relative(double position, double velocity) {
             
-            double dist = position*wheelGearRatio
+            double dist = position*wheelGearRatio;
             
-            leftMG.move_relative(dist, velocity)
+            leftMG.move_relative(dist, velocity);
+            rightMG.move_relative(dist, velocity);
         }
    
 };
