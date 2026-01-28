@@ -1,7 +1,7 @@
 #include "lib.h"
 #include "main.h"
 
-const double Pi = 3.145
+const double Pi = 3.145;
 namespace e_lib {
 class Chassis {
     private:
