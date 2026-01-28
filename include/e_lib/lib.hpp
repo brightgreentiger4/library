@@ -2,11 +2,11 @@
 
 #include "main.h"
 
-#ifndef Chassis
 #define Chassis
 
 namespace e_lib {
-class Chassis
+
+class Chassis{
 
     public:
     /**
@@ -47,7 +47,7 @@ class Chassis
 	 * 
 	 */
 
-    void move_relative(const double position, const double velocity) const;
+    void move_relative(const double position, const double velocity);
 
 	/**
 	 * Rotates the chassis along a curve.
@@ -62,6 +62,11 @@ class Chassis
 	 * The direction of turn. -1 or 1. Other values will break the robot. NO BOOLEAN TOO LAZY
 	 */
 
-    void turn(const double radius, const double degrees, const double velocity, int dir)
-
+    void turnWithRadius(const double radius, const double degrees, const double velocity, int dir);
+	private:
+		pros::MotorGroup leftMG;
+		pros::MotorGroup rightMG;
+		double chassisWidth;
+		double wheelGearRatio;
+};
 }
