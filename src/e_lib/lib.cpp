@@ -7,7 +7,7 @@ namespace e_lib {
     Chassis::Chassis(std::vector<std::int8_t> left, std::vector<std::int8_t> right, double width, double wheelDia ,double gearRatio) : leftPorts(left), rightPorts(right), chassisWidth(width), wheelGearRatio(gearRatio) 
     {};
 
-    void Chassis::turnWithRadius(const double degrees, const double radius, double velocity, const int dir) {
+    void Chassis::turn(const double degrees, const double radius, double velocity, const int dir) {
         pros::MotorGroup leftMG(leftPorts);
         pros::MotorGroup rightMG(rightPorts);
 
