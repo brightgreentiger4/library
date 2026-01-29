@@ -49,6 +49,8 @@ namespace e_lib {
 
         double dist = position*wheelGearRatio;
         
+        leftMG.tare_position();
+
         leftMG.move_relative(dist, velocity);
         rightMG.move_relative(dist, velocity);
 
