@@ -5,7 +5,9 @@ const double Pi = 3.145;
 namespace e_lib {
 
     Chassis::Chassis(std::vector<std::int8_t> left, std::vector<std::int8_t> right, double width, double wheelDia ,double gearRatio) : leftPorts(left), rightPorts(right), chassisWidth(width), wheelGearRatio(gearRatio) 
-    {};
+    {
+        wheelGearRatio/=Pi*wheelDia; // SET WHEEL RATIO TO CIRCUMFERENCE.
+    };
 
     void Chassis::turn(const double degrees, const double radius, double velocity, const int dir) {
         pros::MotorGroup leftMG(leftPorts);

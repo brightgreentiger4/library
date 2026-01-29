@@ -10,11 +10,13 @@ class Chassis{
 		std::vector<std::int8_t> rightPorts; // THIS IS SIMILAR TO EVERY OTHER LIBRARY
 		double chassisWidth;
 		double wheelGearRatio;
+		double wheelCircumference;
     public:
     /**
 	 * Creates a new Chassis object
      * Requires 2 MotorGroups: Left and Right
      * Requires a distance between the two MotorGroups (for turning)
+	 * Requires a ratio between motor encoder units and wheel rotations.
      * @param left
      * LEFT MG
      * @param right
