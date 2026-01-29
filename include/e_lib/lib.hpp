@@ -10,7 +10,6 @@ class Chassis{
 		std::vector<std::int8_t> rightPorts; // THIS IS SIMILAR TO EVERY OTHER LIBRARY
 		double chassisWidth;
 		double wheelGearRatio;
-		double wheelCircumference;
     public:
     /**
 	 * Creates a new Chassis object
