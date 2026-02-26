@@ -63,7 +63,10 @@ void autonomous() {
 	// EXAMPLE USAGE OF CHASSIS
 	e_lib::Chassis myChassis({1, 2, 3}, {4, 5, 6}, 7.5, 4.125, 1);
 	myChassis.move_relative(50, 50);
-	myChassis.turn(90, 9, 80, 1);
+	myChassis.turn(9, 90, 80, 1); // ROTATE CHASSIS CLOCKWISE IN A PATH OF 90 DEGREES OF A RADIUS 9 CIRCLE
+	myChassis.turn(-9, 90, 80, -1); // ROTATE CHASSIS ANTICLOCKWISE IN A PATH OF 90 DEGREES OF A -9 RADIUS CIRCLE
+
+
 }
 
 /**
