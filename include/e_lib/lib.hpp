@@ -6,8 +6,10 @@ namespace e_lib {
 
 class Chassis{ 
 	private:
-		std::vector<std::int8_t> leftPorts; // SINCE WE CANT STORE A PROS::MOTORGROUP DIRECTLY, WE STORE PORTS.
+		std::vector<std::int8_t> leftPorts; // SINCE WE CANT STORE A PROS::MOTORGROUP DIRECTLY, WE STORE PORTS. #idiot store a pointer and dereference
 		std::vector<std::int8_t> rightPorts; // THIS IS SIMILAR TO EVERY OTHER LIBRARY
+		pros::MotorGroup* leftTrack;
+		pros::MotorGroup* rightTrack;
 		double chassisWidth;
 		double wheelGearRatio;
     public:
@@ -60,4 +62,5 @@ class Chassis{
     void turn(const double radius, const double degrees, const double velocity, int dir = 1);
 	
 };
+
 }

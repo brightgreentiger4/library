@@ -6,12 +6,17 @@ namespace e_lib {
 
     Chassis::Chassis(std::vector<std::int8_t> left, std::vector<std::int8_t> right, double width, double wheelDia ,double gearRatio) : leftPorts(left), rightPorts(right), chassisWidth(width), wheelGearRatio(gearRatio) 
     {
+        leftTrack = &pros::MotorGroup(left);
+        rightTrack = &pros::MotorGroup(right);
         wheelGearRatio/=Pi*wheelDia; // SET WHEEL RATIO TO CIRCUMFERENCE.
     };
 
     void Chassis::turn(const double degrees, const double radius, double velocity, const int dir) {
-        pros::MotorGroup leftMG(leftPorts);
-        pros::MotorGroup rightMG(rightPorts);
+        //pros::MotorGroup leftMG(leftPorts);
+        //pros::MotorGroup rightMG(rightPorts);
+
+        pros::MotorGroup leftMG = *leftTrack;
+        pros::MotorGroup rightMG = *rightTrack;
 
         double proportionOfCircle = 360/degrees;
         double baseDist = 2*radius*Pi*wheelGearRatio*proportionOfCircle; // 2PIR * proportion
@@ -50,6 +55,7 @@ namespace e_lib {
         double dist = position*wheelGearRatio;
         
         leftMG.tare_position();
+        rightMG.tare_position();
 
         leftMG.move_relative(dist, velocity);
         rightMG.move_relative(dist, velocity);
