@@ -15,8 +15,8 @@ namespace e_lib {
         //pros::MotorGroup leftMG(leftPorts);
         //pros::MotorGroup rightMG(rightPorts);
 
-        pros::MotorGroup leftMG = *leftTrack;
-        pros::MotorGroup rightMG = *rightTrack;
+        pros::MotorGroup& leftMG = *leftTrack;
+        pros::MotorGroup& rightMG = *rightTrack;
 
         double proportionOfCircle = 360/degrees;
         double baseDist = 2*radius*Pi*wheelGearRatio*proportionOfCircle; // 2PIR * proportion
