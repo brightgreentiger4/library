@@ -4,11 +4,10 @@
 const double Pi = 3.145;
 namespace e_lib {
 
-    Chassis::Chassis(std::vector<std::int8_t> left, std::vector<std::int8_t> right, double width, double wheelDia ,double gearRatio) : leftPorts(left), rightPorts(right), chassisWidth(width), wheelGearRatio(gearRatio) 
-    {
-        leftTrack = &pros::MotorGroup(left);
-        rightTrack = &pros::MotorGroup(right);
-        wheelGearRatio/=Pi*wheelDia; // SET WHEEL RATIO TO CIRCUMFERENCE.
+    Chassis::Chassis(std::vector<std::int8_t> left, std::vector<std::int8_t> right, double width, double wheelDia ,double gearRatio) : leftPorts(left), rightPorts(right), chassisWidth(width) {
+        leftTrack = new pros::MotorGroup(left);
+        rightTrack = new pros::MotorGroup(right);
+        wheelGearRatio =gearRatio/(Pi*wheelDia); //  1/circumference (so spinning 1 unit should be not in pi)
     };
 
     void Chassis::turn(const double degrees, const double radius, double velocity, const int dir) {
@@ -49,8 +48,8 @@ namespace e_lib {
     }
 
     void Chassis::move_relative(double position, double velocity) {
-        pros::MotorGroup leftMG(leftPorts);
-        pros::MotorGroup rightMG(rightPorts);
+        pros::MotorGroup& leftMG = *leftTrack;
+        pros::MotorGroup& rightMG = *rightTrack;
 
         double dist = position*wheelGearRatio;
         
@@ -65,4 +64,6 @@ namespace e_lib {
         };
 
     }
+
+    
 }

@@ -1,4 +1,4 @@
-// lib.h
+// lib.hpp
 #pragma once
 #include "main.h"
 
@@ -61,6 +61,10 @@ class Chassis{
 
     void turn(const double radius, const double degrees, const double velocity, int dir = 1);
 	
+	~Chassis() {
+        delete leftTrack;
+        delete rightTrack;
+    }
 };
 
 }
