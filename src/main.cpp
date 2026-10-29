@@ -22,12 +22,25 @@ void on_center_button() {
  * All other competition modes are blocked by initialize; it is recommended
  * to keep execution time for this mode under a few seconds.
  */
+using namespace e_lib;
 void initialize() {
-	pros::lcd::initialize();
-	pros::lcd::set_text(1, "Hello PROS User!");
+	init();
+	printToLabel("printTest");
 
-	pros::lcd::register_btn1_cb(on_center_button);
-	
+	for (int i = 0; i<20; i++) {
+		printToLabel("printTest" + std::to_string(i));
+		pros::delay(50);
+	}
+
+	for (int i = 0; i<20; i++) {
+		printToLabel("print\nTest" + std::to_string(i));
+		pros::delay(50);
+	}
+
+	for (int i = 0; i<20; i++) {
+		printToLabel("pri\nnt\nTest" + std::to_string(i));
+		pros::delay(50);
+	}
 }
 
 /**

@@ -66,5 +66,8 @@ class Chassis{
         delete rightTrack;
     }
 };
+// FYI: also initializes LVGL.
+void init();
+void printToLabel(std::string text);
 
 }
