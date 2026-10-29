@@ -67,7 +67,7 @@ namespace e_lib {
 
         while ((leftMG.get_position() < dist-5) || (leftMG.get_position() > dist+5)) {
             pros::delay(20);
-        };
+        };  
 
     }
 
