@@ -76,12 +76,24 @@ namespace e_lib {
     static std::queue<int> lineLengths = {};
     static int lines = 0;
     void printToLabel(std::string s) {
+
+        int lastBreak = 0;
+        for (int i=0; i<size(s); i++) {
+            if (s[i] == '\n') {
+                // handle linebreaks by adding to lines
+                lines++;
+                lineLengths.push(i-lastBreak+1);
+                lastBreak = i +1;
+            }
+        }
+
 	outputStream += s + "\n";
 	lines++;
-	lineLengths.push(size(s)+1);
-	if (lines > 12) {
+	lineLengths.push(size(s)+1-lastBreak);
+	while (lines > 12) {
 		outputStream.erase(0, lineLengths.front());
 		lineLengths.pop();
+        lines--;
 	}
 	lv_label_set_text_fmt(diagnosticLabel, outputStream.c_str());
 }
