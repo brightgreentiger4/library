@@ -75,7 +75,7 @@ namespace e_lib {
     static std::string outputStream = "";
     static std::queue<int> lineLengths = {};
     static int lines = 0;
-    void printToLabel(std::string s) {
+    void print(std::string s) {
 
         int lastBreak = 0;
         for (int i=0; i<size(s); i++) {
@@ -90,7 +90,7 @@ namespace e_lib {
 	outputStream += s + "\n";
 	lines++;
 	lineLengths.push(size(s)+1-lastBreak);
-	while (lines > 12) {
+	while (lines > 14) {
 		outputStream.erase(0, lineLengths.front());
 		lineLengths.pop();
         lines--;
@@ -104,7 +104,7 @@ namespace e_lib {
         lv_label_set_text(diagnosticLabel, "");
         lv_obj_set_style_text_color(lv_screen_active(), lv_color_hex(0xffffff), LV_PART_MAIN);
         lv_obj_align(diagnosticLabel, LV_ALIGN_TOP_LEFT, 0, 0);
-	    lv_obj_set_size(diagnosticLabel, 720, 420);
-        printToLabel("E-Lib successfully initialized print functionality");
+	    lv_obj_set_size(diagnosticLabel, lv_pct(100), lv_pct(100));
+        printToLabel("E-Lib successfully initialized! Version 0.0.6");
     }
 }
