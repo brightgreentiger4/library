@@ -68,6 +68,6 @@ class Chassis{
 };
 // FYI: also initializes LVGL.
 void init();
-void printToLabel(std::string text);
-
+void print(std::string text);
+void printToLabel(std::string text); // new work should not use printToLabel
 }

@@ -86,7 +86,6 @@ namespace e_lib {
                 lastBreak = i +1;
             }
         }
-
 	outputStream += s + "\n";
 	lines++;
 	lineLengths.push(size(s)+1-lastBreak);
@@ -98,6 +97,9 @@ namespace e_lib {
 	lv_label_set_text_fmt(diagnosticLabel, outputStream.c_str());
 }
     
+    void printToLabel(std::string s) {
+        print(s);
+    }
     void init() {
         lvgl_init();
         diagnosticLabel = lv_label_create(lv_screen_active());
@@ -105,6 +107,6 @@ namespace e_lib {
         lv_obj_set_style_text_color(lv_screen_active(), lv_color_hex(0xffffff), LV_PART_MAIN);
         lv_obj_align(diagnosticLabel, LV_ALIGN_TOP_LEFT, 0, 0);
 	    lv_obj_set_size(diagnosticLabel, lv_pct(100), lv_pct(100));
-        printToLabel("E-Lib successfully initialized! Version 0.0.6");
+        print("E-Lib successfully initialized! Version 0.0.6");
     }
 }

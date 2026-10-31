@@ -7,13 +7,7 @@
  * "I was pressed!" and nothing.
  */
 void on_center_button() {
-	static bool pressed = false;
-	pressed = !pressed;
-	if (pressed) {
-		pros::lcd::set_text(2, "I was pressed!");
-	} else {
-		pros::lcd::clear_line(2);
-	}
+	
 }
 
 /**
@@ -25,20 +19,20 @@ void on_center_button() {
 using namespace e_lib;
 void initialize() {
 	init();
-	printToLabel("printTest");
+	print("printTest");
 
 	for (int i = 0; i<20; i++) {
-		printToLabel("printTest" + std::to_string(i));
+		print("printTest" + std::to_string(i));
 		pros::delay(50);
 	}
 
 	for (int i = 0; i<20; i++) {
-		printToLabel("print\nTest" + std::to_string(i));
+		print("print\nTest" + std::to_string(i));
 		pros::delay(50);
 	}
 
 	for (int i = 0; i<20; i++) {
-		printToLabel("pri\nnt\nTest" + std::to_string(i));
+		print("pri\nnt\nTest" + std::to_string(i));
 		pros::delay(50);
 	}
 }
