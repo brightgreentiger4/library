@@ -32,6 +32,12 @@ class Chassis{
 
     Chassis(std::vector<std::int8_t> left, std::vector<std::int8_t> right, double width, double wheelDia, double gearRatio);
 
+	/*
+	Eq. to move() on chassis
+	
+	*/
+	void move(const int speed);
+
     /**
 	 * Moves the chassis forward by distance.
 	 *

@@ -16,6 +16,15 @@ namespace e_lib {
         wheelGearRatio =gearRatio/(Pi*wheelDia); //  1/circumference (so spinning 1 unit should be not in pi)
     };
 
+    void Chassis::move(const int speed) {
+        
+        pros::MotorGroup& leftMG = *leftTrack;
+        pros::MotorGroup& rightMG = *rightTrack;
+
+        leftMG.move(speed);
+        rightMG.move(speed);
+        return;
+    };
     void Chassis::turn(const double degrees, const double radius, double velocity, const int dir) {
         //pros::MotorGroup leftMG(leftPorts);
         //pros::MotorGroup rightMG(rightPorts);
